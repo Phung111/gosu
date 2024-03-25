@@ -1,27 +1,6 @@
 @font-face {
-  font-family: 'fz_dtgame';
-  src: url('./FZ\ DTGAME.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'beVietNamPro';
-  src: url('./BeVietnamPro-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'SVN_Shikimaru';
-  src: url('./SVN-Shikamaru.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'OTF_Kaisho';
-  src: url('./A-OTF-KaishoMCBK1Pro-DeBold.otf') format('truetype');
+  font-family: 'futirism';
+  src: url('./Futurism.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
