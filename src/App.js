@@ -11,6 +11,7 @@ import React from 'react'
 
 // import Loading from 'components/Loading'
 
-export default function App() {
+function App() {
   return <>Hello World</>
 }
+export default App
