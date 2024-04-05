@@ -1,12 +1,16 @@
 {
   "files": {
-    "main.css": "/gosu/static/css/main.579686ce.css",
-    "main.js": "/gosu/static/js/main.996a1b83.js",
+    "main.css": "/gosu/static/css/main.62300abc.css",
+    "main.js": "/gosu/static/js/main.06ff410b.js",
+    "static/media/activities.jpg": "/gosu/static/media/activities.2b38af066c9f11b4ad04.jpg",
+    "static/media/bg-andmore.jpg": "/gosu/static/media/bg-andmore.5f8595fa7f76eaebe94c.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/gosu/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fa-solid-900.ttf": "/gosu/static/media/fa-solid-900.45a265d0f07b31cde85f.ttf",
+    "static/media/culture.jpg": "/gosu/static/media/culture.a30c8949114a0546bbc8.jpg",
     "static/media/SourceSansPro-Bold.otf": "/gosu/static/media/SourceSansPro-Bold.751d4a14f36df3f4d63c.otf",
     "static/media/SourceSansPro-Regular.otf": "/gosu/static/media/SourceSansPro-Regular.7a9975d8c02d6933c47d.otf",
     "static/media/bg-top-ft.jpg": "/gosu/static/media/bg-top-ft.78b0c5b16f900959438d.jpg",
+    "static/media/benefits.jpg": "/gosu/static/media/benefits.2e0e97ca4ac3f6d50991.jpg",
     "static/media/fa-brands-400.ttf": "/gosu/static/media/fa-brands-400.6205fd00fb1b573e9f0f.ttf",
     "static/media/cack_pc.jpg": "/gosu/static/media/cack_pc.970ca99c9853a978b99d.jpg",
     "static/media/bg-slhome.jpg": "/gosu/static/media/bg-slhome.63ab88d100ef5e072ee1.jpg",
@@ -16,14 +20,19 @@
     "static/media/fa-solid-900.woff2": "/gosu/static/media/fa-solid-900.fb8184add5a3101ad0a3.woff2",
     "static/media/nkvs.jpg": "/gosu/static/media/nkvs.1c8d1960f517fcd6adee.jpg",
     "static/media/nkvs2.jpg": "/gosu/static/media/nkvs2.29afb0e99a19893ffa76.jpg",
+    "static/media/bg-toplife.jpg": "/gosu/static/media/bg-toplife.52747e4560ec90b078c8.jpg",
     "static/media/dinhphong3q.jpg": "/gosu/static/media/dinhphong3q.b999789067dcfb247442.jpg",
     "static/media/bg-top-abhome.jpg": "/gosu/static/media/bg-top-abhome.4155335fb9ddcce5904b.jpg",
     "static/media/fa-brands-400.woff2": "/gosu/static/media/fa-brands-400.8d3cabfc66809162fb4d.woff2",
+    "static/media/value.jpg": "/gosu/static/media/value.a8e7160dfa8149c03bfe.jpg",
     "static/media/loading.jpg": "/gosu/static/media/loading.599f534e14fd88a765dd.jpg",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/gosu/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/life1.jpg": "/gosu/static/media/life1.aa61bc86ea8beaf3a713.jpg",
     "static/media/bg-fg.jpg": "/gosu/static/media/bg-fg.4943f789b16d65202e8c.jpg",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/gosu/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "static/media/watercolour-sprite.png": "/gosu/static/media/watercolour-sprite.8d8cb8b8538e6d072313.png",
     "static/media/fa-regular-400.ttf": "/gosu/static/media/fa-regular-400.adc51aab4d771ab65f81.ttf",
+    "static/media/life2.jpg": "/gosu/static/media/life2.0d30b1e51dcc0c9f0a09.jpg",
     "static/media/join-td.png": "/gosu/static/media/join-td.bf29e27ac6dc5fb23f69.png",
     "static/media/img-map.png": "/gosu/static/media/img-map.11798f57f54822ff1d6f.png",
     "static/media/00134-UTM-Micra.ttf": "/gosu/static/media/00134-UTM-Micra.eb99e527aad5eb9a6727.ttf",
@@ -31,6 +40,7 @@
     "static/media/bg-left-it.png": "/gosu/static/media/bg-left-it.7abcbecde54ecee30c59.png",
     "static/media/bgitnew2.png": "/gosu/static/media/bgitnew2.130eed7fc17f34aa9308.png",
     "static/media/m-img-map.png": "/gosu/static/media/m-img-map.b174a28dc94b34253422.png",
+    "static/media/life3.jpg": "/gosu/static/media/life3.d3e5d865d2034af36284.jpg",
     "static/media/fa-regular-400.woff2": "/gosu/static/media/fa-regular-400.e931bc0d14f5bbb1da22.woff2",
     "static/media/img-linhvat.png": "/gosu/static/media/img-linhvat.37816e7d9af58ef3bdf1.png",
     "static/media/bgitnew4.png": "/gosu/static/media/bgitnew4.264e3766c05c9bbce72c.png",
@@ -39,11 +49,11 @@
     "static/media/fa-v4compatibility.ttf": "/gosu/static/media/fa-v4compatibility.2eb7b3ef25042305f3ff.ttf",
     "static/media/fa-v4compatibility.woff2": "/gosu/static/media/fa-v4compatibility.b3049b13a93f07e026fc.woff2",
     "index.html": "/gosu/index.html",
-    "main.579686ce.css.map": "/gosu/static/css/main.579686ce.css.map",
-    "main.996a1b83.js.map": "/gosu/static/js/main.996a1b83.js.map"
+    "main.62300abc.css.map": "/gosu/static/css/main.62300abc.css.map",
+    "main.06ff410b.js.map": "/gosu/static/js/main.06ff410b.js.map"
   },
   "entrypoints": [
-    "static/css/main.579686ce.css",
-    "static/js/main.996a1b83.js"
+    "static/css/main.62300abc.css",
+    "static/js/main.06ff410b.js"
   ]
 }
