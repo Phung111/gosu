@@ -1,7 +1,7 @@
 export default function Foot() {
   return (
     <>
-      <div className="border-t-2 border-primary bg-black px-[2%] py-[5%] lg:py-[60px]">
+      <div id="foot" className="border-t-2 border-primary bg-black px-[2%] py-[5%] lg:py-[60px]">
         <div className="flex flex-col items-center justify-between gap-2 lg:flex-row">
           <img src={require(`assets/images/home/logo.png`)} alt="m-img-map" className="h-[50px] w-[200px] object-contain" />
           <div className="flex items-center gap-5">

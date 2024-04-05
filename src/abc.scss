@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap');
+
+:root {
+  --orange: #f7912f;
+  --maskWidth: 770px;
+  --height: 430px;
+  --frames: 50;
+  --totalTransitionTime: 1.3s;
+  --offset: -300px;
+}
+
+.image {
+  height: var(--height);
+  overflow: hidden;
+  position: relative;
+  transform: scale(1);
+  transition: all 4s;
+}
+.image.burn {
+  transform: scale(1) translateX(-170px);
+}
+.image.burn .image_burn {
+  animation: burn var(--totalTransitionTime) forwards steps(var(--frames), end);
+}
+.image div {
+  position: absolute;
+  width: var(--maskWidth);
+  height: var(--height);
+  background-size: auto 100%;
+  background-position: 0 0;
+}
+.image div img {
+  width: 700px;
+  transform: scale(0.9);
+}
+.image_burn {
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/burnStrip.jpg');
+}
+
+@keyframes burn {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -38145px 0;
+  }
+}

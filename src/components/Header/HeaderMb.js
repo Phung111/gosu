@@ -9,11 +9,11 @@ export default function HeaderMb() {
 
   return (
     <>
-      <div className="h-screen w-screen bg-black/50">
-        <div className="mt-[60px] flex flex-col items-center">
+      <div className="h-screen w-screen bg-black/60">
+        <div className="flex flex-col items-center pt-[60px]">
           {links.map((item, index) => (
             <Link key={index} to={item.url} className="flex h-11 w-full items-center justify-center border-b border-white/50">
-              <p className={`text-[15px] uppercase ${item.isSelect ? 'text-primary' : 'text-white'} hover:text-primary`}>{item.text}</p>
+              <p className={`SourceSansPro-b trasition text-[15px] uppercase duration-300 ${item.isSelect ? 'text-primary' : 'text-white'} hover:text-primary`}>{item.text}</p>
             </Link>
           ))}
         </div>

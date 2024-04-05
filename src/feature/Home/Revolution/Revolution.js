@@ -79,8 +79,10 @@ export default function Revolution() {
         setSlidesPerViewLg(4)
       } else if (screenWidth > 768) {
         setSlidesPerViewLg(3)
-      } else {
+      } else if (screenWidth > 420) {
         setSlidesPerViewLg(2)
+      } else {
+        setSlidesPerViewLg(1)
       }
     }
 
@@ -123,14 +125,14 @@ export default function Revolution() {
                         <div className="relative h-[313px] cursor-pointer overflow-hidden rounded-xl md:h-[558px]" onClick={() => handleFlip(item.id)}>
                           <div className={`${item.img} transiton-all backface-visibility-hidden absolute h-full w-full bg-cover duration-500 ${isFlip ? 'flip_start' : 'flip_back'}`}>
                             <div className="flex h-full flex-col items-center justify-between px-[2%] pb-[10%] pt-[25%] lg:pt-[175px]">
-                              <div className="SourceSansPro-b text-center text-lg capitalize">{item.title}</div>
-                              <p className="SourceSansPro-b text-2xl text-white">{item.year}</p>
+                              <div className="SourceSansPro-b text-center text-lg capitalize [font-size:_clamp(16px,4vw,23.5px)]">{item.title}</div>
+                              <p className="SourceSansPro-b text-2xl text-white [font-size:_clamp(20px,5vw,40px)]">{item.year}</p>
                             </div>
                           </div>
                           <div className={`transiton-all backface-visibility-hidden absolute h-full w-full bg-[url('assets/images/home/bgit-hv.png')] bg-cover duration-500 ${isFlip ? 'flip_back' : 'flip_start'}`}>
                             <div className="flex h-full flex-col gap-[10%] px-[10%] pb-[10%] pt-[25%] lg:gap-[25px] lg:pt-[105px]">
-                              <div className="SourceSansPro-b text-lg capitalize text-white">{item.title}</div>
-                              <p className="text-white">{item.description}</p>
+                              <div className="SourceSansPro-b text-lg capitalize text-white [font-size:_clamp(16px,3vw,20px)]">{item.title}</div>
+                              <p className="text-white [font-size:_clamp(16px,3vw,20px)]">{item.description}</p>
                             </div>
                           </div>
                         </div>
@@ -140,10 +142,10 @@ export default function Revolution() {
               </Swiper>
               <div className="absolute left-0 top-0 flex h-full w-full items-center">
                 <div className="flex w-full justify-between">
-                  <button className={`swiper-button-prev-custom -translate-x-[150%] rounded-bl-xl rounded-tl-xl lg:-translate-x-[50%] ${swipreBtnClass} ${!canPrevious ? 'opacity-0' : 'opacity-100'}`}>
+                  <button className={`swiper-button-prev-custom -translate-x-[50%] rounded-bl-xl rounded-tl-xl sm:-translate-x-[150%] lg:-translate-x-[50%] ${swipreBtnClass} ${!canPrevious ? 'opacity-0' : 'opacity-100'}`}>
                     <img src={require(`assets/images/home/prev.png`)} alt="button_prev" className="object-contain" />
                   </button>
-                  <button className={`swiper-button-next-custom translate-x-[150%] rounded-br-xl rounded-tr-xl lg:translate-x-[50%] ${swipreBtnClass} ${!canNext ? 'opacity-0' : 'opacity-100'}`}>
+                  <button className={`swiper-button-next-custom translate-x-[50%] rounded-br-xl rounded-tr-xl sm:translate-x-[150%] lg:translate-x-[50%] ${swipreBtnClass} ${!canNext ? 'opacity-0' : 'opacity-100'}`}>
                     <img src={require(`assets/images/home/next.png`)} alt="button_next" className="object-contain" />
                   </button>
                 </div>

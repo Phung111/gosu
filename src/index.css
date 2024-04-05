@@ -75,7 +75,11 @@
   }
 
   .container2 {
-    @apply mx-auto w-[92%] lg:max-w-[1024px] xl:max-w-[1130px];
+    @apply mx-auto w-[92%] lg:max-w-[960px] xl:max-w-[1130px];
+  }
+
+  .container3 {
+    @apply mx-auto w-[92%] 1200:max-w-[1130px] lg:max-w-[960px];
   }
 
   .title {
@@ -141,6 +145,67 @@
     }
     50% {
       transform: rotate(15deg);
+    }
+  }
+
+  .bullet_cover {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    position: relative;
+  }
+
+  .bullet_cover:hover .bullet_img {
+    @apply hidden;
+  }
+
+  .swiper-pagination-bullet-active .bullet_img {
+    @apply hidden;
+  }
+  .swiper-pagination-bullet-active .bullet_img_hv {
+    @apply block;
+  }
+
+  .bullet_cover:hover .bullet_img_hv {
+    @apply block;
+  }
+
+  .bullet_content {
+    @apply relative flex w-full max-w-[414px] cursor-pointer items-center justify-center lg:h-[88px];
+  }
+
+  .bullet_img {
+    @apply h-full w-full object-contain;
+  }
+
+  .bullet_img_hv {
+    @apply hidden h-full w-full object-contain;
+  }
+
+  .bullte_title {
+    @apply SourceSansPro-b absolute top-0 z-10 flex h-full w-full items-center justify-center capitalize text-white [font-size:_clamp(16px,3vw,30px)];
+  }
+
+  .swiper-pagination-bullet-active {
+    @apply bg-none;
+  }
+
+  .image_burnn {
+    width: 256px;
+    height: 200px;
+    background-image: url('assets/images/life//watercolour-sprite.png');
+    animation: burn 1.5s forwards steps(32);
+  }
+
+  @keyframes burn {
+    from {
+      background-position-x: -8192px;
+    }
+    to {
+      background-position-x: 0px;
     }
   }
 }

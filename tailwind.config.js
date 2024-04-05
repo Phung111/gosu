@@ -9,6 +9,8 @@ module.exports = {
         '-lg': { max: '1023px' },
         '-md': { max: '767px' },
         '-sm': { max: '639px' },
+        1200: { max: '1200' },
+        1360: { max: '1360px' },
       },
       colors: {
         default: '#fff',
