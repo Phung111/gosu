@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import { motion } from 'framer-motion'
 
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Revolution() {
   const [canPrevious, setCanPrevious] = useState(false)
@@ -26,50 +26,10 @@ export default function Revolution() {
 
   const swipreBtnClass = `relative z-30 h-[60px] lg:h-[120px] w-[20px] lg:w-[54px] flex items-center justify-center bg-[#f2f2f2] shadow-md sm:transition sm:hover:scale-125 `
 
-  const data = [
-    {
-      id: 1,
-      title: 'we are one',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nesciunt ratione, minus libero fugit, soluta explicabo ullam accusantium dolore',
-      year: '2015-2016',
-      img: `bg-[url('assets/images/home/bgitnew1.png')]`,
-    },
-    {
-      id: 2,
-      title: 'one life, one dream',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nesciunt ratione, minus libero fugit, soluta explicabo ullam accusantium dolore',
-      year: '2015-2016',
-      img: `bg-[url('assets/images/home/bgitnew2.png')]`,
-    },
-    {
-      id: 3,
-      title: 'we share, we build up',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nesciunt ratione, minus libero fugit, soluta explicabo ullam accusantium dolore',
-      year: '2015-2016',
-      img: `bg-[url('assets/images/home/bgitnew3.png')]`,
-    },
-    {
-      id: 4,
-      title: 'team work makes dream works',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nesciunt ratione, minus libero fugit, soluta explicabo ullam accusantium dolore',
-      year: '2015-2016',
-      img: `bg-[url('assets/images/home/bgitnew4.png')]`,
-    },
-    {
-      id: 5,
-      title: 'sea to ocean',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nesciunt ratione, minus libero fugit, soluta explicabo ullam accusantium dolore',
-      year: '2015-2016',
-      img: `bg-[url('assets/images/home/bgitnew1.png')]`,
-    },
-    {
-      id: 6,
-      title: 'go on sea unicorn - go on space unicorn',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nesciunt ratione, minus libero fugit, soluta explicabo ullam accusantium dolore',
-      year: '2015-2016',
-      img: `bg-[url('assets/images/home/bgitnew2.png')]`,
-    },
-  ]
+  const home = useSelector((state) => state.baseSlice.home)
+  const language = useSelector((state) => state.baseSlice.language)
+
+  const mang = home[2].data.content
 
   useEffect(() => {
     function handleResize() {
@@ -89,7 +49,6 @@ export default function Revolution() {
     window.addEventListener('resize', handleResize)
 
     handleResize()
-    console.log('slidesPerViewLg', slidesPerViewLg)
 
     return () => window.removeEventListener('resize', handleResize)
   }, [])
@@ -100,8 +59,8 @@ export default function Revolution() {
         <div className="bg-[url('assets/images/home/bg-top-ft.jpg')] bg-[left_bottom] bg-no-repeat pb-[40%]">
           <div className="container2 relative z-10 flex flex-col">
             <div className="flex flex-col">
-              <h2 className="SourceSansPro-b title text-center">OUR EVOLUTION</h2>
-              <p className="text-center">Started from the bottom - Now we're here</p>
+              <h2 className="SourceSansPro-b title text-center">{window.extractModifiedString(home[2].data.main_title, language)}</h2>
+              <p className="text-center">{window.extractModifiedString(home[2].data.sub_title, language)}</p>
             </div>
             <div className="relative mt-[10%] h-full w-full lg:mt-[50px]">
               <Swiper
@@ -117,22 +76,24 @@ export default function Revolution() {
                 slidesPerView={slidesPerViewLg}
                 spaceBetween={30}
               >
-                {data &&
-                  data.map((item) => {
-                    const isFlip = selectedId === item.id
+                {mang &&
+                  mang.map((item, index) => {
+                    const isFlip = selectedId === index
                     return (
-                      <SwiperSlide key={item.id}>
-                        <div className="relative h-[313px] cursor-pointer overflow-hidden rounded-xl md:h-[558px]" onClick={() => handleFlip(item.id)}>
-                          <div className={`${item.img} transiton-all backface-visibility-hidden absolute h-full w-full bg-cover duration-500 ${isFlip ? 'flip_start' : 'flip_back'}`}>
+                      <SwiperSlide key={index}>
+                        <div className="relative h-[313px] cursor-pointer overflow-hidden rounded-xl  md:h-[558px]" onClick={() => handleFlip(index)}>
+                          <div className={`transiton-all backface-visibility-hidden realtive absolute h-full w-full overflow-hidden rounded-xl bg-cover duration-500 ${isFlip ? 'flip_start' : 'flip_back'}`}>
+                            <img src={require(`assets/images/home/bgitnew${index + 1}.png`)} className="absolute z-[-1] h-full w-full object-cover" />
                             <div className="flex h-full flex-col items-center justify-between px-[2%] pb-[10%] pt-[25%] lg:pt-[175px]">
-                              <div className="SourceSansPro-b text-center text-lg capitalize [font-size:_clamp(16px,4vw,23.5px)]">{item.title}</div>
-                              <p className="SourceSansPro-b text-2xl text-white [font-size:_clamp(20px,5vw,40px)]">{item.year}</p>
+                              <div className="SourceSansPro-b text-center text-lg capitalize [font-size:_clamp(16px,4vw,23.5px)]" dangerouslySetInnerHTML={{ __html: window.extractModifiedString(item.title, language) }} />
+                              <p className="SourceSansPro-b text-2xl text-white [font-size:_clamp(20px,5vw,40px)]">{window.extractModifiedString(item.years, language)}</p>
                             </div>
                           </div>
-                          <div className={`transiton-all backface-visibility-hidden absolute h-full w-full bg-[url('assets/images/home/bgit-hv.png')] bg-cover duration-500 ${isFlip ? 'flip_back' : 'flip_start'}`}>
+                          <div className={`transiton-all backface-visibility-hidden absolute h-full w-full overflow-hidden rounded-xl bg-cover duration-500 ${isFlip ? 'flip_back' : 'flip_start'}`}>
+                            <img src={require(`assets/images/home/bgit-hv.png`)} className="absolute z-[-1] h-full w-full object-cover" />
                             <div className="flex h-full flex-col gap-[10%] px-[10%] pb-[10%] pt-[25%] lg:gap-[25px] lg:pt-[105px]">
-                              <div className="SourceSansPro-b text-lg capitalize text-white [font-size:_clamp(16px,3vw,20px)]">{item.title}</div>
-                              <p className="text-white [font-size:_clamp(16px,3vw,20px)]">{item.description}</p>
+                              <div className="SourceSansPro-b text-center text-lg capitalize  text-white [font-size:_clamp(16px,3vw,20px)]" dangerouslySetInnerHTML={{ __html: window.extractModifiedString(item.title, language) }} />
+                              <div className=" text-white [font-size:_clamp(16px,3vw,20px)]" dangerouslySetInnerHTML={{ __html: window.extractModifiedString(item.content, language) }} />
                             </div>
                           </div>
                         </div>
