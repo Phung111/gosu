@@ -27,7 +27,7 @@ export default function OurValue() {
   return (
     <>
       <div className={`relative h-[100vh] min-h-[800px] w-full ${bg} hidden overflow-hidden bg-center lg:block`}>
-        <div className="image_burn absolute z-20 h-[340px] w-[890px]"></div>
+        {/* <div className="image_burn absolute z-20 h-[340px] w-[890px]"></div> */}
         <div className="flex h-full w-full divide-x-[0.5px] divide-white/40">{data && data.map((item) => <Part key={item.id} item={item} isSelected={selectedId === item.id} handleClick={handleClick} />)}</div>
       </div>
       <div className="relative mt-[60px] block lg:hidden">
