@@ -228,4 +228,8 @@
       background-position-x: 0px;
     }
   }
+
+  .font_title_news {
+    font-size: calc(1.325rem + 0.9vw);
+  }
 }

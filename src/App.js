@@ -67,8 +67,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/life" element={<Life />} />
             <Route path="/world" element={<World />} />
+            <Route path="/news/*/:id" element={<Life />} />
             <Route path="/news/*" element={<News />} />
-            <Route path="/news/*/abc" element={<Home />} />
           </Routes>
         </HashRouter>
       )}

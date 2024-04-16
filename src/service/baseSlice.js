@@ -13,12 +13,17 @@ const initialState = {
   posts: [],
   title: '',
   year: null,
-  slug: 'all',
+  slug: '',
   limit: '3',
   offset: '0',
 
+  count_all: 0,
   language: { en: true, kh: false },
   loading: true,
+
+  categories: [],
+
+  info: {},
 }
 
 export const getHome = createAsyncThunk(`${namespace}/getHome`, async (obj, { rejectWithValue }) => {
@@ -87,13 +92,17 @@ export const getPosts = createAsyncThunk(`${namespace}/getPosts`, async (obj, { 
     stringArray.push(`year=${year}`)
   }
   if (slug != null && slug.length > 0) {
-    stringArray.push(`slug=${slug}`)
+    if (slug == '') {
+      stringArray.push(`slug=all`)
+    } else {
+      stringArray.push(`slug=${slug}`)
+    }
   }
   if (limit != null && limit.length > 0) {
     if (slug === 'all') {
       stringArray.push(`limit=4`)
     } else {
-      stringArray.push(`limit=${limit}`)
+      stringArray.push(`limit=3`)
     }
   }
   if (offset != null && offset.length > 0) {
@@ -103,6 +112,81 @@ export const getPosts = createAsyncThunk(`${namespace}/getPosts`, async (obj, { 
 
   return await service
     .getPosts(string)
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      return rejectWithValue(error)
+    })
+})
+
+export const loadMore = createAsyncThunk(`${namespace}/loadMore`, async (obj, { rejectWithValue, getState }) => {
+  const { posts, title, year, slug, limit, offset } = getState().baseSlice
+
+  const stringArray = []
+  if (title != null && title.length > 0) {
+    stringArray.push(`title=${title}`)
+  }
+  if (year != null && year.length > 0) {
+    stringArray.push(`year=${year}`)
+  }
+  if (slug != null && slug.length > 0) {
+    if (slug == '') {
+      stringArray.push(`slug=all`)
+    } else {
+      stringArray.push(`slug=${slug}`)
+    }
+    console.log('lug', slug)
+  }
+  if (limit != null && limit.length > 0) {
+    if (slug === 'all') {
+      stringArray.push(`limit=4`)
+    } else {
+      stringArray.push(`limit=3`)
+    }
+  }
+
+  let length = posts.length.toString()
+  if (offset != null && offset.length > 0) {
+    stringArray.push(`offset=${length}`)
+  }
+  const string = stringArray.join('&')
+
+  return await service
+    .getPosts(string)
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      return rejectWithValue(error)
+    })
+})
+
+export const getCategories = createAsyncThunk(`${namespace}/getCategories`, async (obj, { rejectWithValue }) => {
+  return await service
+    .getCategories()
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      return rejectWithValue(error)
+    })
+})
+
+export const likePost = createAsyncThunk(`${namespace}/likePost`, async (obj, { rejectWithValue }) => {
+  return await service
+    .likePost(obj)
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      return rejectWithValue(error)
+    })
+})
+
+export const getPostDetail = createAsyncThunk(`${namespace}/getPostDetail`, async (obj, { rejectWithValue }) => {
+  return await service
+    .getPostDetail(obj)
     .then((response) => {
       return response.data
     })
@@ -139,6 +223,14 @@ const baseSlice = createSlice({
     setOffset: (state, action) => {
       state.offset = action.payload
     },
+    setShow: (state, action) => {
+      state.isShow = true
+      state.isInfo = false
+    },
+    setInfo: (state, action) => {
+      state.isShow = false
+      state.isInfo = true
+    },
   },
   extraReducers(builder) {
     builder
@@ -161,12 +253,27 @@ const baseSlice = createSlice({
       })
       .addCase(getPosts.fulfilled, (state, { payload }) => {
         state.posts = payload.data.posts
+        state.offset = state.posts.length.toString()
+        state.count_all = payload.data.count_all
       })
+      .addCase(loadMore.fulfilled, (state, { payload }) => {
+        let addPosts = payload.data.posts
+        state.posts = state.posts.concat(addPosts)
+        state.offset = state.posts.length.toString()
+        state.count_all = payload.data.count_all
+      })
+      .addCase(getCategories.fulfilled, (state, { payload }) => {
+        state.categories = payload.data
+      })
+      .addCase(getPostDetail.fulfilled, (state, { payload }) => {
+        state.info = payload.data
+      })
+      .addCase(likePost.fulfilled, (state, { payload }) => {})
   },
 })
 
 const { reducer, actions } = baseSlice
 
-export const { setLanguage, setLoading, setLimit, setOffset, setSlug, setYear, setTitle } = actions
+export const { setLanguage, setLoading, setLimit, setOffset, setSlug, setYear, setTitle, setShow, setInfo } = actions
 
 export default reducer

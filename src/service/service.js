@@ -29,6 +29,18 @@ const service = {
   getPosts: async (string) => {
     return await axiosClient.get(`https://gamocorp.com/api/all-posts?${string}`)
   },
+  loadMore: async (string) => {
+    return await axiosClient.get(`https://gamocorp.com/api/all-posts?${string}`)
+  },
+  getCategories: async (string) => {
+    return await axiosClient.get(`https://gamocorp.com/api/all-categories`)
+  },
+  getPostDetail: async (string) => {
+    return await axiosClient.get(`https://gamocorp.com/api/post/${string}`)
+  },
+  likePost: async (idPost) => {
+    return await axiosClient.post(`https://gamocorp.com/api/post/like/${idPost}`)
+  },
 }
 
 export default service

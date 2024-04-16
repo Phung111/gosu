@@ -2,19 +2,22 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Select, Input } from 'antd'
-import { getPosts, setTitle, setYear, setSlug } from 'service/baseSlice'
+import { getPosts, setTitle, setYear, setSlug, setOffset } from 'service/baseSlice'
 
 export default function Head() {
   const dispatch = useDispatch()
   const location = useLocation()
+  const data = useSelector((state) => state.baseSlice)
+  const language = data.language
+  const categories = data.categories
 
-  const links = [
-    { slug: 'all', text: 'all news', url: '/news/' },
-    { slug: 'announcement', text: 'annoucement', url: '/news/announcement' },
-    { slug: 'activities', text: 'activites', url: '/news/activities' },
-    { slug: 'game', text: 'game', url: '/news/game' },
-    { slug: 'archive', text: 'archive', url: '/news/archive' },
-  ]
+  const [categoriInUrl, setCategoriInUrl] = useState(null)
+
+  useEffect(() => {
+    const urlPathname = location.pathname
+    const match = urlPathname.match(/\/news\/([^\/]+)/)
+    setCategoriInUrl(match ? match[1] : null)
+  }, [location])
 
   const years = [
     { value: '', label: '' },
@@ -38,6 +41,7 @@ export default function Head() {
     dispatch(getPosts())
   }
   const handleSetSlug = (value) => {
+    dispatch(setOffset('0'))
     dispatch(setSlug(value))
     dispatch(getPosts())
   }
@@ -50,13 +54,19 @@ export default function Head() {
     <>
       <div className="flex flex-col justify-center lg:flex-row lg:items-center lg:justify-between -lg:gap-5">
         <div className="flex h-[45px] gap-[25px]">
-          {links.map((item, index) => (
-            <Link to={item.url} className="group relative flex items-center justify-center" key={index} onClick={() => handleSetSlug(item.slug)}>
-              <p className={`${location.pathname === item.url ? 'text-black' : 'text-[#BFBFBF] hover:text-black'} SourceSansPro-b capitalize [font-size:_clamp(12px,3.2vw,18px)] `}>{item.text}</p>
-              <div className="absolute bottom-0 h-1 w-7 rounded-full bg-primary opacity-0 group-hover:opacity-100" />
-              {location.pathname === item.url && <div className="absolute bottom-0 h-1 w-7 rounded-full bg-primary" />}
-            </Link>
-          ))}
+          <Link to={'/news/'} className="group relative flex items-center justify-center" onClick={() => handleSetSlug('all')}>
+            <p className={`${categoriInUrl == null || categoriInUrl == 'all' ? 'text-black' : 'text-[#BFBFBF] hover:text-black'} SourceSansPro-b capitalize [font-size:_clamp(12px,3.2vw,18px)] `}>{language.en ? 'all news' : 'ទាំងអស់។'}</p>
+            <div className="absolute bottom-0 h-1 w-7 rounded-full bg-primary opacity-0 group-hover:opacity-100" />
+            {categoriInUrl == null && <div className="absolute bottom-0 h-1 w-7 rounded-full bg-primary" />}
+          </Link>
+          {categories &&
+            categories.map((item, index) => (
+              <Link to={`/news/${item.slug}`} className="group relative flex items-center justify-center" key={index} onClick={() => handleSetSlug(item.slug)}>
+                <p className={`${categoriInUrl == item.slug ? 'text-black' : 'text-[#BFBFBF] hover:text-black'} SourceSansPro-b capitalize [font-size:_clamp(12px,3.2vw,18px)] `}>{window.extractModifiedString(item.title, language)}</p>
+                <div className="absolute bottom-0 h-1 w-7 rounded-full bg-primary opacity-0 group-hover:opacity-100" />
+                {categoriInUrl == item.slug && <div className="absolute bottom-0 h-1 w-7 rounded-full bg-primary" />}
+              </Link>
+            ))}
         </div>
         <div className="flex h-[45px] gap-2 -lg:w-full">
           <Select onChange={(value) => handleChangeYear(value)} className="h-full w-1/2 lg:w-[250px]" placeholder="Pick a year" variant="filled" options={years.map((item) => ({ value: item.value, label: item.label }))} />
