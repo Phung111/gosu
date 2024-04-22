@@ -20,7 +20,7 @@ export default function PartBig({ post }) {
         <div className={`relative flex h-[700px] rounded-xl bg-blue/20`}>
           <img className="absolute left-0 top-0 z-[-2] h-full w-full rounded-xl object-cover" src={require(`assets/images/news/bg-fg.jpg`)} alt="bg" />
           <div className="relative flex h-full w-full items-end transition-all duration-500 group-hover:-translate-x-2">
-            <img className="absolute left-0 top-0 z-[-1] h-full w-full rounded-xl object-cover " src={require(`assets/images/news/tpc_6740.jpg`)} alt="bg" />
+            <img className="absolute left-0 top-0 z-[-1] h-full w-full rounded-xl object-cover " src={require(`assets/images${post.image}`)} alt="bg" />
             <div className={`flex flex-col bg-black/40 px-[4%] py-2.5 text-white`}>
               <div className="flex items-center gap-2">
                 <img className="aspect-square w-6" src={require(`assets/images/news/logoG.png`)} alt="" />

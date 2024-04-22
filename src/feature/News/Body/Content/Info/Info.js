@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { getPosts, setShow } from 'service/baseSlice'
 
 export default function Info() {
+  const dispatch = useDispatch()
+
   const data = useSelector((state) => state.baseSlice)
   const language = data.language
   const info = data.info
@@ -39,11 +41,16 @@ export default function Info() {
     alert('The link has been copied')
   }
 
+  const handleBack = () => {
+    dispatch(getPosts())
+    dispatch(setShow(true))
+  }
+
   return (
     <>
       <div className="flex flex-col gap-[15px]">
         <div className="flex justify-between">
-          <button className="SourceSansPro-b flex items-center gap-1 text-[#a8a8a8] transition-all duration-500 [font-size:_clamp(12px,3.5vw,16px)] hover:tracking-[0.1em] hover:text-primary">
+          <button onClick={handleBack} className="SourceSansPro-b flex items-center gap-1 text-[#a8a8a8] transition-all duration-500 [font-size:_clamp(12px,3.5vw,16px)] hover:tracking-[0.1em] hover:text-primary">
             <i className="fa-solid fa-chevron-left" />
             Back
           </button>

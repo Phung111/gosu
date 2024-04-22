@@ -41,7 +41,6 @@ export default function Feature() {
     window.addEventListener('resize', handleResize)
 
     handleResize()
-    console.log('slidesPerViewLg', slidesPerViewLg)
 
     return () => window.removeEventListener('resize', handleResize)
   }, [])

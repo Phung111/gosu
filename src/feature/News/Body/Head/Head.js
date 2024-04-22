@@ -8,10 +8,11 @@ export default function Head() {
   const dispatch = useDispatch()
   const location = useLocation()
   const data = useSelector((state) => state.baseSlice)
+  const slug = data.slug
   const language = data.language
   const categories = data.categories
 
-  const [categoriInUrl, setCategoriInUrl] = useState(null)
+  const [categoriInUrl, setCategoriInUrl] = useState(slug)
 
   useEffect(() => {
     const urlPathname = location.pathname

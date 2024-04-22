@@ -5,7 +5,7 @@ import Slogan from './Slogan/Slogan'
 import Body from './Body/Body'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { getPosts, getCategories, setSlug, setShow, getPostDetail } from 'service/baseSlice'
+import { getPosts, getCategories, setSlug, setShow, getPostDetail, setLimit, setOffset } from 'service/baseSlice'
 import { useLocation } from 'react-router-dom'
 
 export default function News() {
@@ -16,20 +16,24 @@ export default function News() {
     const urlPathname = location.pathname
     const regex = /\/news\/([^\/]+)\/([^\/]+)$/
     const match = urlPathname.match(regex)
-    dispatch(setShow())
+    dispatch(setShow(true))
     dispatch(setSlug(match ? match[1] : 'all'))
+    dispatch(setLimit('4'))
+    dispatch(setOffset('0'))
     dispatch(getCategories())
     dispatch(getPosts())
   }, [])
 
   useEffect(() => {
-    const urlPathname = location.pathname
+    const urlHash = location.hash
+    console.log('match', match)
     const regex = /\/news\/([^\/]+)\/([^\/]+)$/
-    const match = urlPathname.match(regex)
+    const match = urlHash.match(regex)
+    console.log('match', match)
     if (match && match[2]) {
       dispatch(getPostDetail(match[2]))
     }
-  }, [location])
+  }, [location.hash])
 
   return (
     <>

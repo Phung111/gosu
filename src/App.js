@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllGames, getHome, getLife, getNews, getWorld, setLoading } from 'service/baseSlice'
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes, BrowserRouter } from 'react-router-dom'
 
 import Home from 'feature/Home/Home'
 import Life from 'feature/Life/Life'
@@ -62,15 +62,27 @@ function App() {
     <>
       {isLoading && <Loading />}
       {!isLoading && (
-        <HashRouter>
+        // <HashRouter>
+        //   <Routes>
+        //     <Route path="/" element={<Home />} />
+        //     <Route path="/life" element={<Life />} />
+        //     <Route path="/world" element={<World />} />
+        //     <Route path="/news/*/:id" element={<Life />} />
+        //     <Route path="/news/*" element={<News />} />
+        //   </Routes>
+        //  </HashRouter>
+
+        <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/life" element={<Life />} />
-            <Route path="/world" element={<World />} />
-            <Route path="/news/*/:id" element={<Life />} />
-            <Route path="/news/*" element={<News />} />
+            <Route path="/" element={<Home />}>
+              <Route path="/gosu" element={<Home />} />
+              <Route path="/life" element={<Life />} />
+              <Route path="/world" element={<World />} />
+              <Route path="/news/*/:id" element={<Life />} />
+              <Route path="/news/*" element={<News />} />
+            </Route>
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       )}
     </>
   )

@@ -14,21 +14,13 @@ export default function Part({ post, horizone }) {
     dispatch(getPostDetail(post.slug))
   }
 
-  function extractFileName(inputString) {
-    const regex = /\/uploads\/posts\/\d+\/([^\/]+\.(jpg|jpeg|png))/
-    const match = inputString.match(regex)
-    return match ? match[1] : null
-  }
-
-  let srcImg = extractFileName(post.image)
-
   return (
     <>
       <Link to={stringUrl} className="group" onClick={handlePost}>
         <div className={`flex ${horizone ? 'flex-row-reverse' : 'flex-col'} gap-5`}>
           <div className={`relative flex shrink-0 bg-cover bg-center md:h-[222px] lg:pt-[25%] -md:pt-[60%] ${horizone ? 'h-[275px] w-[41.66%]' : 'w-full'}`}>
             <img className="absolute left-0 top-0 h-full w-full rounded-xl object-cover" src={require(`assets/images/news/bg-fg.jpg`)} alt="" />
-            {srcImg && <img className="absolute left-0 top-0 h-full w-full rounded-xl object-cover transition-all duration-500 group-hover:-translate-y-2" src={require(`assets/images/news/${srcImg}`)} alt="" />}
+            <img className="absolute left-0 top-0 h-full w-full rounded-xl object-cover transition-all duration-500 group-hover:-translate-y-2" src={require(`assets/images${post.image}`)} alt="" />
           </div>
           <div className={`flex flex-col`}>
             <div className="flex items-center gap-2">

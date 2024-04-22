@@ -57,33 +57,19 @@ export default function Hire() {
                 el: '.swiper-custom-pagination',
                 clickable: true,
                 renderBullet: function (index, className) {
-                  let imgSrc, imgHvSrc, title
-                  switch (index) {
-                    case 0:
-                      imgSrc = img1
-                      imgHvSrc = img1hv
-                      title = 'ready'
-                      break
-                    case 1:
-                      imgSrc = img2
-                      imgHvSrc = img2hv
-                      title = 'set'
-                      break
-                    case 2:
-                      imgSrc = img3
-                      imgHvSrc = img3hv
-                      title = 'game on'
-                      break
-                    default:
-                      imgSrc = ''
-                      imgHvSrc = ''
-                      title = ''
-                  }
+                  const slides = [
+                    { imgSrc: img1, imgHvSrc: img1hv, title: 'ready' },
+                    { imgSrc: img2, imgHvSrc: img2hv, title: 'set' },
+                    { imgSrc: img3, imgHvSrc: img3hv, title: 'game on' },
+                  ]
+
+                  const { imgSrc, imgHvSrc, title } = slides[index] || { imgSrc: '', imgHvSrc: '', title: '' }
+
                   return `<div class="${className} bullet_cover" data-index="${index}>
                         <div class="bullet_content">
                           <img src="${imgSrc}" alt="bg-ithwh1" class="bullet_img" />
                           <img src="${imgHvSrc}" alt="bg-ithwh1" class="bullet_img_hv" />
-                          <div class="bullte_title">${title}</div>
+                          <div class="bullet_title">${title}</div>
                         </div>
                       </div>`
                 },

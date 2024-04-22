@@ -3,14 +3,13 @@ import Info from './Info/Info'
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { setShow } from 'service/baseSlice'
 
 export default function Content() {
-  const data = useSelector((state) => state.baseSlice)
-  const categories = data.categories
-
+  const dispatch = useDispatch()
   const location = useLocation()
-
-  const [show, setShow] = useState(true)
+  const data = useSelector((state) => state.baseSlice)
+  const isShow = data.isShow
 
   useEffect(() => {
     const urlPathname = location.pathname
@@ -19,14 +18,14 @@ export default function Content() {
     const matchedType = match && match[2]
     if (matchedType != null) {
       if (matchedType.length <= 0) {
-        setShow(true)
+        dispatch(setShow(true))
       } else {
-        setShow(false)
+        dispatch(setShow(false))
       }
     } else {
-      setShow(true)
+      dispatch(setShow(true))
     }
   }, [location])
 
-  return <>{show ? <Show /> : <Info />}</>
+  return <>{isShow ? <Show /> : <Info />}</>
 }

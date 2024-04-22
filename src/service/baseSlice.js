@@ -24,6 +24,8 @@ const initialState = {
   categories: [],
 
   info: {},
+
+  isShow: true,
 }
 
 export const getHome = createAsyncThunk(`${namespace}/getHome`, async (obj, { rejectWithValue }) => {
@@ -224,12 +226,7 @@ const baseSlice = createSlice({
       state.offset = action.payload
     },
     setShow: (state, action) => {
-      state.isShow = true
-      state.isInfo = false
-    },
-    setInfo: (state, action) => {
-      state.isShow = false
-      state.isInfo = true
+      state.isShow = action.payload
     },
   },
   extraReducers(builder) {
@@ -251,11 +248,22 @@ const baseSlice = createSlice({
       .addCase(getAllGames.fulfilled, (state, { payload }) => {
         state.allGames = payload.data
       })
+      // .addCase(getPosts.pending, (state) => {
+      //   state.loading = true
+      // })
       .addCase(getPosts.fulfilled, (state, { payload }) => {
         state.posts = payload.data.posts
         state.offset = state.posts.length.toString()
         state.count_all = payload.data.count_all
+        state.loading = false
       })
+      // .addCase(getPosts.rejected, (state, { payload }) => {
+      //   if (payload.response) {
+      //     state.errorMessage = payload.response.statusText
+      //     state.errorStatus = payload.response.status
+      //   }
+      //   state.loading = false
+      // })
       .addCase(loadMore.fulfilled, (state, { payload }) => {
         let addPosts = payload.data.posts
         state.posts = state.posts.concat(addPosts)
@@ -274,6 +282,6 @@ const baseSlice = createSlice({
 
 const { reducer, actions } = baseSlice
 
-export const { setLanguage, setLoading, setLimit, setOffset, setSlug, setYear, setTitle, setShow, setInfo } = actions
+export const { setLanguage, setLoading, setLimit, setOffset, setSlug, setYear, setTitle, setShow } = actions
 
 export default reducer

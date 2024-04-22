@@ -189,7 +189,7 @@
     @apply hidden h-full w-full object-contain;
   }
 
-  .bullte_title {
+  .bullet_title {
     @apply SourceSansPro-b absolute top-0 z-10 flex h-full w-full items-center justify-center capitalize text-white [font-size:_clamp(16px,3vw,30px)];
   }
 
@@ -231,5 +231,119 @@
 
   .font_title_news {
     font-size: calc(1.325rem + 0.9vw);
+  }
+
+  .swiper-slide-active .animation_world_game {
+    transition: opacity 0.5s ease-out;
+    animation: a_world_game 2s;
+  }
+
+  @keyframes a_world_game {
+    from {
+      transform: translateX(-150px);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .swiper-slide-active .animation_world_des {
+    transition: opacity 0.5s ease-out;
+    animation: a_world_des 2s;
+  }
+
+  @keyframes a_world_des {
+    from {
+      transform: translateX(150px);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .pagination_world_game {
+    display: flex !important;
+    width: 55px !important;
+    height: 55px !important;
+
+    border-radius: 12px !important;
+
+    background-color: transparent !important;
+  }
+
+  .swiper-pagination-bullet.swiper-pagination-bullet-active.pagination_world_game > img {
+    padding: 1px !important;
+    border: 1px solid !important;
+    border-color: #ed8b33 !important;
+  }
+
+  .pagination_world_game img {
+    @apply rounded-xl;
+  }
+
+  .pagination_verse_grid {
+    @apply mx-auto mt-5 grid grid-cols-2 gap-9 lg:grid-cols-4;
+    width: 85% !important;
+  }
+
+  .pagination_verse {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100% !important;
+    height: 100% !important;
+    background: none !important;
+    opacity: 100 !important;
+  }
+
+  .swiper-pagination-bullet-active .pagination_verse_bar {
+    @apply w-[90%];
+  }
+
+  .swiper-pagination-bullet-active .pagination_verse_title {
+    @apply text-primary;
+  }
+
+  .pagination_verse_head {
+    @apply flex flex-col gap-1;
+  }
+
+  .pagination_verse_title {
+    @apply SourceSansPro-b [font-size:_clamp(14px,4vw,20px)];
+  }
+
+  .pagination_verse_bar {
+    @apply h-[3px] w-[32px] rounded-full bg-primary transition-all duration-500;
+  }
+
+  .pagination_verse_content {
+    @apply mt-2 text-justify [font-size:_clamp(10px,2.5vw,16px)];
+  }
+
+  @media (min-width: 1024px) {
+    .pagination_verse:not(:last-child)::after {
+      position: absolute;
+      content: '';
+      width: 1px;
+      height: 100%;
+      background: #e3e3e3;
+      right: -18px;
+      top: 0;
+    }
+  }
+
+  /* Khi màn hình bé hơn 1024px */
+  @media (max-width: 1023px) {
+    .pagination_verse:not(:nth-child(even))::after {
+      position: absolute;
+      content: '';
+      width: 1px;
+      height: 100%;
+      background: #e3e3e3;
+      right: -18px;
+      top: 0;
+    }
   }
 }
