@@ -26,11 +26,11 @@ export default function News() {
 
   useEffect(() => {
     const urlHash = location.hash
-    console.log('match', match)
     const regex = /\/news\/([^\/]+)\/([^\/]+)$/
     const match = urlHash.match(regex)
-    console.log('match', match)
+
     if (match && match[2]) {
+      console.log('match', match)
       dispatch(getPostDetail(match[2]))
     }
   }, [location.hash])

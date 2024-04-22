@@ -62,25 +62,13 @@ function App() {
     <>
       {isLoading && <Loading />}
       {!isLoading && (
-        // <HashRouter>
-        //   <Routes>
-        //     <Route path="/" element={<Home />} />
-        //     <Route path="/life" element={<Life />} />
-        //     <Route path="/world" element={<World />} />
-        //     <Route path="/news/*/:id" element={<Life />} />
-        //     <Route path="/news/*" element={<News />} />
-        //   </Routes>
-        //  </HashRouter>
-
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />}>
-              <Route path="/gosu" element={<Home />} />
-              <Route path="/life" element={<Life />} />
-              <Route path="/world" element={<World />} />
-              <Route path="/news/*/:id" element={<Life />} />
-              <Route path="/news/*" element={<News />} />
-            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/life" element={<Life />} />
+            <Route path="/world" element={<World />} />
+            <Route path="/news/*/:id" element={<Life />} />
+            <Route path="/news/*" element={<News />} />
           </Routes>
         </BrowserRouter>
       )}
