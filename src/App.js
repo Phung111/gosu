@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllGames, getHome, getLife, getNews, getWorld, setLoading } from 'service/baseSlice'
 import { HashRouter, Route, Routes, BrowserRouter } from 'react-router-dom'
@@ -65,9 +65,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/gosu" element={<Home />} />
             <Route path="/life" element={<Life />} />
             <Route path="/world" element={<World />} />
-            <Route path="/news/*/:id" element={<Life />} />
             <Route path="/news/*" element={<News />} />
           </Routes>
         </BrowserRouter>

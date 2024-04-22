@@ -138,7 +138,6 @@ export const loadMore = createAsyncThunk(`${namespace}/loadMore`, async (obj, { 
     } else {
       stringArray.push(`slug=${slug}`)
     }
-    console.log('lug', slug)
   }
   if (limit != null && limit.length > 0) {
     if (slug === 'all') {

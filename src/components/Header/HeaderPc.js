@@ -8,7 +8,6 @@ import { setLanguage } from 'service/baseSlice'
 export default function HeaderPc({ isShowNavMb, setShowNavMb }) {
   const dispatch = useDispatch()
   const location = useLocation()
-  console.log('location.pathname', location.pathname)
 
   const links = [
     { text: 'we are gosu', url: '/' },
@@ -81,9 +80,9 @@ export default function HeaderPc({ isShowNavMb, setShowNavMb }) {
           <div className="relative z-10 hidden w-full justify-center lg:flex">
             <div className="flex gap-20">
               {links.map((item, index) => (
-                <a key={index} href={item.url} className={`SourceSansPro-b text-center text-[20px] uppercase text-white hover:text-primary ${location.pathname === item.url ? `${isScrolled ? '!text-primary' : '!text-blue hover:!text-primary'}` : ''}`}>
+                <Link key={index} to={item.url} className={`SourceSansPro-b text-center text-[20px] uppercase text-white hover:text-primary ${location.pathname === item.url ? `${isScrolled ? '!text-primary' : '!text-blue hover:!text-primary'}` : ''}`}>
                   {item.text}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
