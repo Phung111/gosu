@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gosu/static/css/main.3e397fec.css",
-    "main.js": "/gosu/static/js/main.fc2ff8d9.js",
+    "main.js": "/gosu/static/js/main.175ad999.js",
     "static/media/tuyetthecuuthien.png": "/gosu/static/media/tuyetthecuuthien.b69adceea2932aab5312.png",
     "static/media/img_2031_1.jpg": "/gosu/static/media/img_2031_1.ac7680d1f98781f32ba0.jpg",
     "static/media/tpc_6740.jpg": "/gosu/static/media/tpc_6740.ec548cda205a82f973bd.jpg",
@@ -82,10 +82,10 @@
     "static/media/fa-v4compatibility.woff2": "/gosu/static/media/fa-v4compatibility.b3049b13a93f07e026fc.woff2",
     "index.html": "/gosu/index.html",
     "main.3e397fec.css.map": "/gosu/static/css/main.3e397fec.css.map",
-    "main.fc2ff8d9.js.map": "/gosu/static/js/main.fc2ff8d9.js.map"
+    "main.175ad999.js.map": "/gosu/static/js/main.175ad999.js.map"
   },
   "entrypoints": [
     "static/css/main.3e397fec.css",
-    "static/js/main.fc2ff8d9.js"
+    "static/js/main.175ad999.js"
   ]
 }
