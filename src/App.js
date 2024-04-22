@@ -62,7 +62,7 @@ function App() {
     <>
       {isLoading && <Loading />}
       {!isLoading && (
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gosu" element={<Home />} />
@@ -70,7 +70,7 @@ function App() {
             <Route path="/world" element={<World />} />
             <Route path="/news/*" element={<News />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       )}
     </>
   )
