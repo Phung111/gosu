@@ -1,19 +1,20 @@
 import { Link, useLocation } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
-import SelectCustom from 'components/SelectCustom'
-import { ConfigProvider, Space, Select } from 'antd'
+import { ConfigProvider, Select } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLanguage } from 'service/baseSlice'
 
 export default function HeaderPc({ isShowNavMb, setShowNavMb }) {
   const dispatch = useDispatch()
   const location = useLocation()
+  const data = useSelector((state) => state.baseSlice)
+  const language = data.language
 
   const links = [
-    { text: 'we are gosu', url: '/' },
-    { text: 'life at gosu', url: '/life' },
-    { text: 'gosu world', url: '/world' },
-    { text: 'gosu news', url: '/news' },
+    { text: 'we are gosu', khome: 'យើងគឺជា GOSU', url: '/' },
+    { text: 'life at gosu', khome: 'ជីវិតនៅ GOSU', url: '/life' },
+    { text: 'gosu world', khome: 'GOSU ពិភពលោក', url: '/world' },
+    { text: 'gosu news', khome: 'ព័ត៌មាន GOSU', url: '/news' },
   ]
 
   const [isScrolled, setIsScrolled] = useState(false)
@@ -81,7 +82,7 @@ export default function HeaderPc({ isShowNavMb, setShowNavMb }) {
             <div className="flex gap-20">
               {links.map((item, index) => (
                 <Link key={index} to={item.url} className={`SourceSansPro-b text-center text-[20px] uppercase text-white hover:text-primary ${location.pathname === item.url ? `${isScrolled ? '!text-primary' : '!text-blue hover:!text-primary'}` : ''}`}>
-                  {item.text}
+                  {language.en == true ? item.text : item.khome}
                 </Link>
               ))}
             </div>
