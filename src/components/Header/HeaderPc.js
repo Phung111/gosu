@@ -45,7 +45,9 @@ export default function HeaderPc({ isShowNavMb, setShowNavMb }) {
       <div className={`h-[60px] w-full px-[2%] transition ${scrollPosition > 300 ? 'bg-blue' : 'bg-blue lg:bg-transparent'}`}>
         <div className="relative flex h-full w-full items-center justify-between">
           <div className="absolute flex h-full w-full items-center justify-between">
-            <img src={require(`assets/images/home/logo.png`)} className="h-[35px] w-[139px]" />
+            <Link to={'/'} className="relative z-50 flex h-[35px] w-[139px]">
+              <img src={require(`assets/images/home/logo.png`)} className="h-full w-full" />
+            </Link>
             <div className="re flex shrink-0 items-center gap-2">
               <Select
                 onChange={(value) => dispatch(setLanguage(value))}
