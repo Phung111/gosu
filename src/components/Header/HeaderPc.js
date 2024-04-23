@@ -10,6 +10,8 @@ export default function HeaderPc({ isShowNavMb, setShowNavMb }) {
   const data = useSelector((state) => state.baseSlice)
   const language = data.language
 
+  const vLanguage = language.en ? 'en' : 'kh'
+
   const links = [
     { text: 'we are gosu', khome: 'យើងគឺជា GOSU', url: '/' },
     { text: 'life at gosu', khome: 'ជីវិតនៅ GOSU', url: '/life' },
@@ -53,6 +55,7 @@ export default function HeaderPc({ isShowNavMb, setShowNavMb }) {
                 onChange={(value) => dispatch(setLanguage(value))}
                 style={{ width: 100, background: 'transparent !important', zIndex: 100 }}
                 defaultValue={'en'}
+                value={vLanguage}
                 options={[
                   {
                     value: 'en',
