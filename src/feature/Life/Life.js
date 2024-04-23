@@ -52,13 +52,17 @@ export default function Life() {
 
   return (
     <>
-      <div id="head" />
-      <Header />
-      <OurValue />
-      <Gosu />
-      <Hire />
-      <Foot />
-      <ToTop />
+      <div className="mx-auto max-w-[1920px]">
+        <div className="relative">
+          <div id="head" />
+          <Header />
+          <OurValue />
+          <Gosu />
+          <Hire />
+          <Foot />
+          <ToTop />
+        </div>
+      </div>
       {/* <div className="group relative h-[500px]">
         <div className="abc" />
         <div className="image_burnn" style={styleBurn} />

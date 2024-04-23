@@ -40,12 +40,16 @@ export default function News() {
 
   return (
     <>
-      <div id="head" />
-      <Header />
-      <Slogan />
-      <Body />
-      <Foot />
-      <ToTop />
+      <div className="mx-auto max-w-[1920px]">
+        <div className="relative">
+          <div id="head" />
+          <Header />
+          <Slogan />
+          <Body />
+          <Foot />
+          <ToTop />
+        </div>
+      </div>
     </>
   )
 }

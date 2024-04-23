@@ -16,13 +16,17 @@ export default function World() {
 
   return (
     <>
-      <div id="head" />
-      <Header />
-      <Slogan />
-      <Game />
-      <Verse />
-      <Foot />
-      <ToTop />
+      <div className="mx-auto max-w-[1920px]">
+        <div className="relative">
+          <div id="head" />
+          <Header />
+          <Slogan />
+          <Game />
+          <Verse />
+          <Foot />
+          <ToTop />
+        </div>
+      </div>
     </>
   )
 }
