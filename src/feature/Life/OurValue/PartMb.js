@@ -1,7 +1,10 @@
-export default function PartMb({ item, isSelected, handleClick }) {
+import { useSelector } from 'react-redux'
+
+export default function PartMb({ item, index, isSelected, handleClick }) {
+  const language = useSelector((state) => state.baseSlice.language)
   return (
     <>
-      <div className={`group relative cursor-pointer ${item.img} overflow-hidden bg-cover bg-center px-[10px] py-[30px] `} onClick={() => handleClick(item)}>
+      <div className={`group relative cursor-pointer overflow-hidden bg-cover bg-center px-[10px] py-[30px] `} onClick={() => handleClick(index)} style={{ backgroundImage: `url(${require(`assets/images${item.bg}`)})` }}>
         {isSelected && <div className="absolute left-0 top-0 h-full w-full bg-black/50"></div>}
         <div className="relative flex h-full w-full justify-center">
           <div className="absolute top-0 flex h-full w-full items-start justify-end">
@@ -10,10 +13,10 @@ export default function PartMb({ item, isSelected, handleClick }) {
               <i className={`fa-solid fa-minus text-white ${isSelected ? '!block' : '!hidden'}`}></i>
             </div>
           </div>
-          <p className={`SourceSansPro-b ${isSelected ? 'hidden' : 'block'} rounded bg-black/50 px-3.5 py-[1px] uppercase text-white transition-all duration-500 [font-size:_clamp(16px,4vw,25px)] group-hover:tracking-widest`}>{item.title}</p>
+          <p className={`SourceSansPro-b ${isSelected ? 'hidden' : 'block'} rounded bg-black/50 px-3.5 py-[1px] uppercase text-white transition-all duration-500 [font-size:_clamp(16px,4vw,25px)] group-hover:tracking-widest`}>{window.extractModifiedString(item.title, language)}</p>
           <div className={`animate__animated ${isSelected ? 'animate__fadeInUp flex ' : 'hidden'} h-full w-full flex-col gap-[15px] `}>
-            <p className="SourceSansPro-b text-center uppercase text-white [font-size:_clamp(20px,4vw,40px)]">{item.title}</p>
-            <p className="text-white [font-size:_clamp(11px,3vw,17.5px)]">{item.des}</p>
+            <p className="SourceSansPro-b text-center uppercase text-white [font-size:_clamp(20px,4vw,40px)]">{window.extractModifiedString(item.title, language)}</p>
+            <div className="text-justify text-white [font-size:_clamp(11px,3vw,17.5px)]" dangerouslySetInnerHTML={{ __html: window.extractModifiedString(item.content, language) }} />
           </div>
         </div>
       </div>

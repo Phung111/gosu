@@ -197,7 +197,7 @@
     @apply bg-none;
   }
 
-  .abc {
+  .image_bg {
     background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/chernimage2.png');
     position: relative;
     width: 100%;
@@ -205,27 +205,39 @@
     background-size: cover;
   }
 
-  .image_burnn {
-    position: absolute;
-    top: 0;
-    width: 1360px;
-    height: 800px;
-    background-image: url('assets/images/life//watercolour-sprite2.png');
-    background-size: 2400%;
-    background-position: center left;
-    animation: burn 1s forwards steps(23);
-    mix-blend-mode: multiply;
+  .img_life {
+    @apply absolute hidden h-full w-full bg-cover bg-center;
+  }
+
+  .img_life.active {
+    z-index: 2;
+    display: block;
+    mask: url('assets/images/life//watercolour-sprite.png');
+    mask-size: 2300% 100%;
+    mask-position: 100% 0;
+    animation: burn 1.4s 1s steps(22) forwards;
+    opacity: 0;
+  }
+
+  .img_life.previous {
+    z-index: 1;
+    display: block;
+  }
+
+  .img_pick.active {
+    @apply grow-[2] bg-black/50;
   }
 
   @keyframes burn {
     from {
-      /* background-position-x: -4096px; */
-      /* background-position-x: -8192px; */
-      /* background-position-x: -16384px; */
-      background-position-x: -32768px;
+      opacity: 1;
+      -webkit-mask-position: 100% 0;
+      mask-position: 100% 0;
     }
     to {
-      background-position-x: 0px;
+      opacity: 1;
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
     }
   }
 
